@@ -1,0 +1,34 @@
+{
+    "name": "yurizoom/moonshine-currency",
+    "type": "library",
+    "description": "Currency field for MoonShine",
+    "keywords": ["moonshine", "currency"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "yurizoom",
+            "homepage": "https://github.com/yurizoom",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-intl": "*",
+        "moonshine/moonshine": "^2.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "YuriZoom\\MoonShineCurrency\\": "src/"
+        }
+    },
+    "conflict": {
+        "moonshine/moonshine": "<2.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "YuriZoom\\MoonShineCurrency\\CurrencyServiceProvider"
+            ]
+        }
+    }
+}
