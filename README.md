@@ -30,6 +30,10 @@ $ composer require yurizoom/moonshine-currency
 
 ## Использование
 
+В базе данных денежная единица хранится в минимальном значении. Например, 100₽ = 10000.
+
+При отображении значение будет делиться на 100.
+
 ```php
 use YuriZoom\MoonShineCurrency\Fields\Currency;
 
