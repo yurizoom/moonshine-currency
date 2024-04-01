@@ -1,5 +1,5 @@
 <x-moonshine::grid>
-    <x-moonshine::column adaptiveColSpan="6" colSpan="{{ $element->isGroup() ? '10' : '12' }}">
+    <x-moonshine::column adaptiveColSpan="6" colSpan="{{ $element->isGroup() ? '8' : '12' }}">
         <x-moonshine::form.input-extensions
                 :extensions="$element->getExtensions()"
         >
@@ -13,7 +13,7 @@
         </x-moonshine::form.input-extensions>
     </x-moonshine::column>
     @if($element->isGroup())
-    <x-moonshine::column adaptiveColSpan="6" colSpan="2">
+    <x-moonshine::column adaptiveColSpan="6" colSpan="4">
 
             <x-moonshine::form.select
                     :attributes="$element->attributes()->merge([
