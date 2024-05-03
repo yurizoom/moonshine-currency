@@ -1,4 +1,4 @@
-Scheduling task manager for MoonShine
+Currency field for MoonShine
 ============================
 
 Поле с валютой для MoonShine. Наследует поле Number.
