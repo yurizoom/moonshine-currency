@@ -30,6 +30,11 @@ class Currency extends Number implements DefaultCanBeArray
         return $this;
     }
 
+    public function toRawValue(bool $withoutModify = false): mixed
+    {
+        return $this->value * 100;
+    }
+
     public function getLocale(): string
     {
         return $this->locale ?? app()->getLocale();
