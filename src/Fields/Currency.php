@@ -3,12 +3,12 @@
 namespace YuriZoom\MoonShineCurrency\Fields;
 
 use Closure;
-use MoonShine\Contracts\Fields\DefaultValueTypes\DefaultCanBeArray;
-use MoonShine\Fields\Number;
-use MoonShine\InputExtensions\InputExt;
+use MoonShine\UI\Contracts\DefaultValueTypes\CanBeArray;
+use MoonShine\UI\Fields\Number;
+use MoonShine\UI\InputExtensions\InputExt;
 use NumberFormatter;
 
-class Currency extends Number implements DefaultCanBeArray
+class Currency extends Number implements CanBeArray
 {
     protected string $view = 'moonshine-currency::fields.currency';
 
@@ -28,6 +28,11 @@ class Currency extends Number implements DefaultCanBeArray
         $this->locale = $locale;
 
         return $this;
+    }
+
+    public function toRawValue(bool $withoutModify = false): mixed
+    {
+        return $this->value * 100;
     }
 
     public function getLocale(): string
@@ -100,20 +105,28 @@ class Currency extends Number implements DefaultCanBeArray
     {
         return function ($item) {
 
-            $values = $this->requestValue();
+            $values = $this->getReactiveValue();
 
             if ($values === false) {
                 return $item;
             }
 
             if ($this->isGroup()) {
-                data_set($item, $this->column(), ($values[$this->column()] ?? 0) * 100);
+                data_set($item, $this->getColumn(), ($values[$this->getColumn()] ?? 0) * 100);
                 data_set($item, $this->currencyColumn(), $values[$this->currencyColumn()] ?? '');
             } else {
-                data_set($item, $this->column(), $values * 100);
+                data_set($item, $this->getColumn(), $values * 100);
             }
 
             return $item;
         };
+    }
+
+    protected function viewData(): array
+    {
+        return [
+            ...$this->getExtensionsViewData(),
+            'element' => $this,
+        ];
     }
 }

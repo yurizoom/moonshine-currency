@@ -1,24 +1,20 @@
-<x-moonshine::grid>
-    <x-moonshine::column adaptiveColSpan="6" colSpan="{{ $element->isGroup() ? '8' : '12' }}">
+<x-moonshine::layout.grid>
+    <x-moonshine::layout.column adaptiveColSpan="6" colSpan="{{ $element->isGroup() ? '8' : '12' }}">
         <x-moonshine::form.input-extensions
                 :extensions="$element->getExtensions()"
         >
-        <x-moonshine::form.input
-                :attributes="$element->attributes()->merge([
-                'id' => $element->id(),
-                'name' => $element->name($element->column()),
+            <x-moonshine::form.input
+                    :attributes="$attributes->merge([
                 'value' => (string) $value
         ])"
-        />
+            />
         </x-moonshine::form.input-extensions>
-    </x-moonshine::column>
+    </x-moonshine::layout.column>
     @if($element->isGroup())
-    <x-moonshine::column adaptiveColSpan="6" colSpan="4">
+        <x-moonshine::layout.column adaptiveColSpan="6" colSpan="4">
 
             <x-moonshine::form.select
-                    :attributes="$element->attributes()->merge([
-                'id' => $element->currencyColumn(),
-                'name' => $element->name($element->currencyColumn()),
+                    :attributes="$attributes->merge([
                 'value' => (string) $value
             ])">
                 <x-slot:options>
@@ -28,6 +24,6 @@
                     @endforeach
                 </x-slot:options>
             </x-moonshine::form.select>
-    </x-moonshine::column>
+        </x-moonshine::layout.column>
     @endif
-</x-moonshine::grid>
+</x-moonshine::layout.grid>

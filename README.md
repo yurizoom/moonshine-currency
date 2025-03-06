@@ -1,7 +1,14 @@
-Currency field for MoonShine
+Currency field for MoonShine 3
 ============================
 
 Поле с валютой для MoonShine. Наследует поле Number.
+
+### Поддержка версий MoonShine
+
+| MoonShine   | Пакет       |
+|-------------|-------------|
+| 2.0+        | 1.0+        |
+| 3.0+        | 2.0+        |
 
 ## Установка
 
@@ -11,7 +18,7 @@ $ composer require yurizoom/moonshine-currency
 
 ## Настройки
 
-В файле config/moonshine.php добавьте конфигурации.
+Если необходимо изменить настройки, добавьте в файле config/moonshine.php:
 
 ```php
 [
