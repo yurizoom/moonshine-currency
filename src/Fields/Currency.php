@@ -105,7 +105,7 @@ class Currency extends Number implements CanBeArray
     {
         return function ($item) {
 
-            $values = $this->getReactiveValue();
+            $values = $this->getRequestValue();
 
             if ($values === false) {
                 return $item;
